@@ -6,11 +6,12 @@ const footerLinks = {
     { label: 'Features', href: '#features' },
     { label: 'Browse Movies', href: '#featured' },
     { label: 'Genres', href: '#genres' },
+    { label: 'Watchlist', href: '#' },
   ],
   Company: [
     { label: 'About', href: '#' },
+    { label: 'Blog', href: '#' },
     { label: 'Careers', href: '#' },
-    { label: 'Press', href: '#' },
   ],
   Support: [
     { label: 'Help Center', href: '#' },
@@ -28,25 +29,23 @@ export function Footer() {
             <Link to="/" className="footer__logo">
               <span className="footer__logo-icon" aria-hidden="true">
                 <svg viewBox="0 0 32 32" fill="none">
-                  <rect
-                    x="2"
-                    y="6"
-                    width="28"
-                    height="20"
-                    rx="4"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                  <path d="M13 12l7 4-7 4V12z" fill="currentColor" />
+                  <rect x="2" y="7" width="28" height="20" rx="3" fill="currentColor" opacity="0.15" stroke="currentColor" strokeWidth="2" />
+                  <rect x="2" y="7" width="5" height="20" fill="currentColor" opacity="0.25" />
+                  <rect x="25" y="7" width="5" height="20" fill="currentColor" opacity="0.25" />
+                  <rect x="4" y="10" width="3" height="4" rx="1" fill="currentColor" />
+                  <rect x="4" y="17" width="3" height="4" rx="1" fill="currentColor" />
+                  <rect x="25" y="10" width="3" height="4" rx="1" fill="currentColor" />
+                  <rect x="25" y="17" width="3" height="4" rx="1" fill="currentColor" />
+                  <polygon points="13,12 13,22 22,17" fill="currentColor" opacity="0.9" />
                 </svg>
               </span>
               CineVault
             </Link>
             <p className="footer__tagline">
-              Your gateway to discovering the world&apos;s greatest films.
+              Your ultimate movie discovery platform. Find, track, and explore films across every genre.
             </p>
             <div className="footer__social">
-              <a href="#" className="footer__social-link" aria-label="Twitter">
+              <a href="#" className="footer__social-link" aria-label="Twitter / X">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
@@ -58,9 +57,10 @@ export function Footer() {
                   <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
                 </svg>
               </a>
-              <a href="#" className="footer__social-link" aria-label="YouTube">
+              <a href="#" className="footer__social-link" aria-label="LinkedIn">
                 <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                  <circle cx="4" cy="4" r="2" />
                 </svg>
               </a>
               <a href="#" className="footer__social-link" aria-label="GitHub">
@@ -89,6 +89,13 @@ export function Footer() {
 
         <div className="footer__bottom">
           <p>&copy; {new Date().getFullYear()} CineVault. All rights reserved.</p>
+          <p className="footer__bottom-links">
+            <a href="#">Terms</a>
+            <span>·</span>
+            <a href="#">Privacy</a>
+            <span>·</span>
+            <a href="#">Cookies</a>
+          </p>
         </div>
       </div>
     </footer>

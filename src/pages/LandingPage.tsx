@@ -9,76 +9,122 @@ import './LandingPage.css'
 export function LandingPage() {
   return (
     <div className="landing">
+      {/* ── Hero ── */}
       <section id="home" className="hero">
-        <div className="hero__bg">
-          <div className="hero__bg-image" />
-          <div className="hero__bg-gradient" />
-          <div className="hero__bg-glow hero__bg-glow--1" />
-          <div className="hero__bg-glow hero__bg-glow--2" />
+        <div className="hero__bg" aria-hidden="true">
+          <div className="hero__bg-blob hero__bg-blob--1" />
+          <div className="hero__bg-blob hero__bg-blob--2" />
+          <div className="hero__bg-blob hero__bg-blob--3" />
+          <div className="hero__bg-noise" />
         </div>
 
-        <div className="container hero__content">
-          <div className="hero__badge">
-            <span className="hero__badge-dot" />
-            Now streaming 50,000+ titles
+        <div className="container hero__inner">
+          {/* Left: Content */}
+          <div className="hero__content">
+            <div className="hero__badge">
+              <span className="hero__badge-dot" aria-hidden="true" />
+              10,000+ Movies &amp; Series Worldwide
+            </div>
+
+            <h1 className="hero__title">
+              Discover Your
+              <br />
+              <span className="hero__title-accent">Next Favorite Film</span>
+            </h1>
+
+            <p className="hero__description">
+              CineVault is the ultimate movie discovery platform. Search by
+              genre, mood, or year — and always know exactly where to watch.
+            </p>
+
+            <div className="hero__actions">
+              <Button to="/signup" variant="primary" size="lg">
+                Get Started Free
+              </Button>
+              <Button to="/signup" variant="secondary" size="lg">
+                Browse Movies
+              </Button>
+            </div>
+
+            <div className="hero__stats">
+              <div className="hero__stat">
+                <span className="hero__stat-value">10K+</span>
+                <span className="hero__stat-label">Movies</span>
+              </div>
+              <div className="hero__stat-divider" />
+              <div className="hero__stat">
+                <span className="hero__stat-value">50+</span>
+                <span className="hero__stat-label">Genres</span>
+              </div>
+              <div className="hero__stat-divider" />
+              <div className="hero__stat">
+                <span className="hero__stat-value">2M+</span>
+                <span className="hero__stat-label">Users</span>
+              </div>
+            </div>
           </div>
 
-          <h1 className="hero__title">
-            Discover Movies
-            <br />
-            <span className="hero__title-accent">Worth Watching</span>
-          </h1>
+          {/* Right: Cinematic poster visual */}
+          <div className="hero__visual" aria-hidden="true">
+            <div className="hero__visual-glow" />
 
-          <p className="hero__description">
-            Search, explore, and curate your perfect watchlist. CineVault brings
-            the magic of cinema to your fingertips with a premium browsing
-            experience.
-          </p>
+            {/* Back poster — left */}
+            <div className="hero__poster hero__poster--back-left">
+              <div className="hero__poster-lines" />
+            </div>
 
-          <div className="hero__actions">
-            <Button to="/signup" variant="primary" size="lg">
-              Get Started
-            </Button>
-            <Button to="/signup" variant="secondary" size="lg">
-              Browse Movies
-            </Button>
+            {/* Back poster — right */}
+            <div className="hero__poster hero__poster--back-right">
+              <div className="hero__poster-lines" />
+            </div>
+
+            {/* Main featured poster */}
+            <div className="hero__poster hero__poster--main">
+              <div className="hero__poster-inner">
+                <div className="hero__poster-top">
+                  <span className="hero__poster-genre-tag">Sci-Fi</span>
+                  <span className="hero__poster-year">2014</span>
+                </div>
+                <div className="hero__poster-body">
+                  <p className="hero__poster-title">Interstellar</p>
+                  <p className="hero__poster-tagline">Beyond the horizon</p>
+                </div>
+                <div className="hero__poster-rating">
+                  <svg viewBox="0 0 14 14" fill="currentColor">
+                    <path d="M7 1l1.54 3.13L12 4.73l-2.5 2.43.59 3.42L7 9l-3.09 1.62.59-3.42L2 4.73l3.46-.6z" />
+                  </svg>
+                  8.7
+                </div>
+              </div>
+            </div>
+
+            {/* Floating: IMDb badge */}
+            <div className="hero__widget hero__widget--rating">
+              <span className="hero__widget-star">⭐</span>
+              <div>
+                <p className="hero__widget-value">9.0 / 10</p>
+                <p className="hero__widget-label">Top Rated</p>
+              </div>
+            </div>
+
+            {/* Floating: Now Playing badge */}
+            <div className="hero__widget hero__widget--playing">
+              <span className="hero__widget-dot" />
+              <p className="hero__widget-text">Now Streaming</p>
+            </div>
           </div>
-
-          <div className="hero__stats">
-            <div className="hero__stat">
-              <span className="hero__stat-value">50K+</span>
-              <span className="hero__stat-label">Movies</span>
-            </div>
-            <div className="hero__stat-divider" />
-            <div className="hero__stat">
-              <span className="hero__stat-value">120+</span>
-              <span className="hero__stat-label">Genres</span>
-            </div>
-            <div className="hero__stat-divider" />
-            <div className="hero__stat">
-              <span className="hero__stat-value">2M+</span>
-              <span className="hero__stat-label">Users</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="hero__film-strip" aria-hidden="true">
-          {[...featuredMovies, ...featuredMovies].map((movie, i) => (
-            <div key={`${movie.id}-${i}`} className="hero__film-frame">
-              <img src={movie.image} alt="" loading="lazy" />
-            </div>
-          ))}
         </div>
       </section>
 
+      {/* ── Featured Movies ── */}
       <section id="featured" className="section featured">
         <div className="container">
           <div className="section-header">
-            <span className="section-label">Trending Now</span>
+            <span className="section-label">Top Picks</span>
             <h2 className="section-title">Featured Movies</h2>
             <p className="section-subtitle">
-              Hand-picked selections from critics and our community — updated
-              weekly.
+              Hand-curated selections from the greatest films of all time —
+              updated weekly by our editorial team.
             </p>
           </div>
 
@@ -90,13 +136,15 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* ── Popular Genres ── */}
       <section id="genres" className="section genres">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Explore</span>
-            <h2 className="section-title">Popular Genres</h2>
+            <h2 className="section-title">Browse by Genre</h2>
             <p className="section-subtitle">
-              Dive into the categories that define great storytelling.
+              From pulse-pounding action to heartfelt drama — find the perfect
+              film for any mood.
             </p>
           </div>
 
@@ -108,14 +156,15 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="features" className="section features">
+      {/* ── Features ── */}
+      <section id="features" className="section features-section">
         <div className="container">
           <div className="section-header section-header--center">
             <span className="section-label">Why CineVault</span>
-            <h2 className="section-title">Built for Movie Lovers</h2>
+            <h2 className="section-title">Everything a Film Lover Needs</h2>
             <p className="section-subtitle">
-              Everything you need to discover, track, and enjoy films — all in
-              one beautiful place.
+              Powerful tools to search, discover, and track movies — all in one
+              beautifully designed platform.
             </p>
           </div>
 
@@ -127,18 +176,25 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* ── CTA ── */}
       <section className="cta">
         <div className="container">
           <div className="cta__card">
             <div className="cta__glow" aria-hidden="true" />
-            <h2 className="cta__title">Ready to start your cinematic journey?</h2>
+            <div className="cta__icon" aria-hidden="true">🎬</div>
+            <h2 className="cta__title">Start Your Cinematic Journey</h2>
             <p className="cta__text">
-              Join millions of movie enthusiasts and never miss a great film
-              again.
+              Join 2 million movie lovers who discover amazing films every day.
+              Your watchlist is waiting — it&apos;s free to get started.
             </p>
-            <Button to="/signup" variant="primary" size="lg">
-              Create Free Account
-            </Button>
+            <div className="cta__actions">
+              <Button to="/signup" variant="primary" size="lg">
+                Sign Up Free
+              </Button>
+              <Button to="/login" variant="secondary" size="lg">
+                Sign In
+              </Button>
+            </div>
           </div>
         </div>
       </section>

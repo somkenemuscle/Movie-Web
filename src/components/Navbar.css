@@ -5,9 +5,11 @@
   right: 0;
   z-index: 100;
   height: var(--nav-height);
-  background: rgba(7, 7, 13, 0.75);
-  backdrop-filter: blur(20px);
+  background: rgba(6, 6, 15, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 1px 32px rgba(0, 0, 0, 0.5);
 }
 
 .navbar__inner {
@@ -23,14 +25,14 @@
   align-items: center;
   gap: 10px;
   font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 0.08em;
   color: var(--color-text);
   transition: opacity var(--transition-fast);
 }
 
 .navbar__logo:hover {
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 .navbar__logo-icon {
@@ -43,14 +45,21 @@
 }
 
 .navbar__logo-icon svg {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
+}
+
+.navbar__logo-text {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .navbar__nav {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .navbar__link {
@@ -66,7 +75,7 @@
 
 .navbar__link:hover {
   color: var(--color-text);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(139, 92, 246, 0.1);
 }
 
 .navbar__link--mobile-only {
@@ -104,7 +113,7 @@
   display: block;
   width: 100%;
   height: 2px;
-  background: var(--color-text);
+  background: var(--color-text-muted);
   border-radius: 2px;
   transition:
     transform var(--transition-base),
@@ -133,9 +142,10 @@
     align-items: stretch;
     padding: 16px;
     gap: 4px;
-    background: rgba(7, 7, 13, 0.95);
-    backdrop-filter: blur(20px);
+    background: rgba(6, 6, 15, 0.97);
+    backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--color-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
     transform: translateY(-110%);
     opacity: 0;
     pointer-events: none;

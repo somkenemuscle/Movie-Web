@@ -15,11 +15,19 @@ export function GenreCard({ genre, index = 0 }: GenreCardProps) {
         animationDelay: `${index * 60}ms`,
       }}
     >
-      <div className="genre-card__content">
-        <h3 className="genre-card__name">{genre.name}</h3>
-        <p className="genre-card__count">{genre.count.toLocaleString()} titles</p>
-      </div>
       <div className="genre-card__glow" aria-hidden="true" />
+      <div className="genre-card__content">
+        <span className="genre-card__icon" aria-hidden="true">
+          {genre.icon}
+        </span>
+        <div>
+          <h3 className="genre-card__name">{genre.name}</h3>
+          <p className="genre-card__count">
+            {genre.count.toLocaleString()}+ movies
+          </p>
+        </div>
+      </div>
+      <span className="genre-card__arrow" aria-hidden="true">→</span>
     </article>
   )
 }

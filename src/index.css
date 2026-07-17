@@ -1,40 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-  --color-bg: #07070d;
-  --color-bg-elevated: #0f0f18;
-  --color-surface: #161622;
-  --color-surface-hover: #1e1e2e;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-strong: rgba(255, 255, 255, 0.14);
+  --color-bg: #06060f;
+  --color-bg-elevated: #0c0c1e;
+  --color-surface: #12122a;
+  --color-surface-hover: #191938;
+  --color-border: rgba(139, 92, 246, 0.12);
+  --color-border-strong: rgba(139, 92, 246, 0.24);
 
-  --color-text: #e8e8f0;
-  --color-text-muted: #9494a8;
-  --color-text-subtle: #6b6b7d;
+  --color-text: #ededff;
+  --color-text-muted: #9d9db8;
+  --color-text-subtle: #6a6a88;
 
-  --color-accent: #e50914;
-  --color-accent-hover: #ff1a26;
-  --color-accent-glow: rgba(229, 9, 20, 0.35);
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #7c3aed;
+  --color-accent-glow: rgba(139, 92, 246, 0.32);
 
-  --color-purple: #8b5cf6;
-  --color-purple-glow: rgba(139, 92, 246, 0.25);
-  --color-gold: #f5c518;
+  --color-pink: #ec4899;
+  --color-gold: #fbbf24;
+  --color-green: #34d399;
 
   --gradient-hero: linear-gradient(
     135deg,
-    rgba(229, 9, 20, 0.15) 0%,
-    rgba(139, 92, 246, 0.12) 50%,
-    rgba(7, 7, 13, 0) 100%
+    rgba(139, 92, 246, 0.09) 0%,
+    rgba(236, 72, 153, 0.05) 55%,
+    rgba(6, 6, 15, 0) 100%
   );
-  --gradient-accent: linear-gradient(135deg, #e50914 0%, #b91c1c 100%);
+  --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
   --gradient-card: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(139, 92, 246, 0.06) 0%,
+    rgba(6, 6, 15, 0) 100%
   );
 
-  --font-display: 'Syne', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Bebas Neue', system-ui, sans-serif;
+  --font-body: 'Poppins', system-ui, sans-serif;
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -42,9 +42,10 @@
   --radius-xl: 24px;
   --radius-full: 9999px;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 64px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.35);
   --shadow-glow: 0 0 40px var(--color-accent-glow);
 
   --transition-fast: 150ms ease;
@@ -87,8 +88,9 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.15;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
   color: var(--color-text);
   margin: 0;
 }
@@ -151,22 +153,27 @@ img {
 }
 
 .section-label {
-  font-size: 13px;
+  font-family: var(--font-body);
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-accent);
 }
 
 .section-title {
-  font-size: clamp(28px, 4vw, 40px);
-  letter-spacing: -0.02em;
+  font-size: clamp(32px, 5vw, 52px);
+  letter-spacing: 0.05em;
+  line-height: 1.05;
+  color: var(--color-text);
 }
 
 .section-subtitle {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--color-text-muted);
   max-width: 520px;
+  line-height: 1.75;
+  font-weight: 400;
 }
 
 @keyframes fadeInUp {
@@ -189,31 +196,36 @@ img {
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.7;
-  }
+@keyframes float-rotate {
+  0%, 100% { transform: translateY(0) rotate(-10deg); }
+  50% { transform: translateY(-8px) rotate(-8deg); }
+}
+
+@keyframes float-right {
+  0%, 100% { transform: translateY(0) rotate(7deg); }
+  50% { transform: translateY(-6px) rotate(9deg); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
 }

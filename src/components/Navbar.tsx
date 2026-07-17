@@ -15,19 +15,14 @@ export function Navbar() {
         <Link to="/" className="navbar__logo" onClick={() => setMenuOpen(false)}>
           <span className="navbar__logo-icon" aria-hidden="true">
             <svg viewBox="0 0 32 32" fill="none">
-              <rect
-                x="2"
-                y="6"
-                width="28"
-                height="20"
-                rx="4"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-              <path
-                d="M13 12l7 4-7 4V12z"
-                fill="currentColor"
-              />
+              <rect x="2" y="7" width="28" height="20" rx="3" fill="currentColor" opacity="0.15" stroke="currentColor" strokeWidth="2" />
+              <rect x="2" y="7" width="5" height="20" fill="currentColor" opacity="0.25" />
+              <rect x="25" y="7" width="5" height="20" fill="currentColor" opacity="0.25" />
+              <rect x="4" y="10" width="3" height="4" rx="1" fill="currentColor" />
+              <rect x="4" y="17" width="3" height="4" rx="1" fill="currentColor" />
+              <rect x="25" y="10" width="3" height="4" rx="1" fill="currentColor" />
+              <rect x="25" y="17" width="3" height="4" rx="1" fill="currentColor" />
+              <polygon points="13,12 13,22 22,17" fill="currentColor" opacity="0.9" />
             </svg>
           </span>
           <span className="navbar__logo-text">CineVault</span>
@@ -42,11 +37,10 @@ export function Navbar() {
               <a href="#home" className="navbar__link" onClick={() => setMenuOpen(false)}>
                 Home
               </a>
-              <a
-                href="#features"
-                className="navbar__link"
-                onClick={() => setMenuOpen(false)}
-              >
+              <a href="#featured" className="navbar__link" onClick={() => setMenuOpen(false)}>
+                Movies
+              </a>
+              <a href="#features" className="navbar__link" onClick={() => setMenuOpen(false)}>
                 Features
               </a>
               <Link
