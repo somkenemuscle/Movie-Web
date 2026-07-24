@@ -1,7 +1,36 @@
 import { Link } from 'react-router-dom'
 import { Input } from '../components/Input'
 import { Button } from '../components/Button'
-import './AuthPage.css'
+import {
+  authBrand,
+  authBrandBg,
+  authBrandBlob1,
+  authBrandBlob2,
+  authBrandContent,
+  authBrandInner,
+  authBrandLogo,
+  authBrandPerkIcon,
+  authBrandPerkItem,
+  authBrandPerks,
+  authBrandPoster,
+  authBrandPosters,
+  authBrandSub,
+  authBrandTitle,
+  authDivider,
+  authForm,
+  authFormHeader,
+  authFormInner,
+  authFormPanel,
+  authFormSub,
+  authFormTitle,
+  authLayout,
+  authLink,
+  authLinkAccent,
+  authSocialBtn,
+  authSubmit,
+  authSwitch,
+  authTerms,
+} from './authClasses'
 
 const IconUser = (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -35,16 +64,16 @@ const posterGradients = [
 
 export function SignUpPage() {
   return (
-    <div className="auth-layout">
+    <div className={authLayout}>
       {/* ── Left brand panel ── */}
-      <div className="auth-brand">
-        <div className="auth-brand__bg" aria-hidden="true">
-          <div className="auth-brand__blob auth-brand__blob--1" />
-          <div className="auth-brand__blob auth-brand__blob--2" />
+      <div className={authBrand}>
+        <div className={authBrandBg} aria-hidden="true">
+          <div className={authBrandBlob1} />
+          <div className={authBrandBlob2} />
         </div>
 
-        <div className="auth-brand__inner">
-          <Link to="/" className="auth-brand__logo">
+        <div className={authBrandInner}>
+          <Link to="/" className={authBrandLogo}>
             <svg viewBox="0 0 32 32" fill="none">
               <rect x="2" y="7" width="28" height="20" rx="3" fill="currentColor" opacity="0.15" stroke="currentColor" strokeWidth="2" />
               <rect x="2" y="7" width="5" height="20" fill="currentColor" opacity="0.3" />
@@ -55,55 +84,51 @@ export function SignUpPage() {
               <rect x="25" y="17" width="3" height="4" rx="1" fill="currentColor" />
               <polygon points="13,12 13,22 22,17" fill="currentColor" />
             </svg>
-            <span>CineVault</span>
+            <span>Alkademy CineVault</span>
           </Link>
 
-          <div className="auth-brand__content">
-            <h1 className="auth-brand__title">
+          <div className={authBrandContent}>
+            <h1 className={authBrandTitle}>
               Start Your<br />Journey
             </h1>
-            <p className="auth-brand__sub">
-              Join 2 million movie lovers who discover amazing films every day with CineVault.
+            <p className={authBrandSub}>
+              Join 2 million movie lovers who discover amazing films every day with Alkademy CineVault.
             </p>
 
-            <ul className="auth-brand__perks">
-              <li>
-                <span className="auth-brand__perk-icon">🎬</span>
+            <ul className={authBrandPerks}>
+              <li className={authBrandPerkItem}>
+                <span className={authBrandPerkIcon}>🎬</span>
                 <span>Unlimited Movie Discovery</span>
               </li>
-              <li>
-                <span className="auth-brand__perk-icon">✨</span>
+              <li className={authBrandPerkItem}>
+                <span className={authBrandPerkIcon}>✨</span>
                 <span>Personalized Recommendations</span>
               </li>
-              <li>
-                <span className="auth-brand__perk-icon">🔒</span>
+              <li className={authBrandPerkItem}>
+                <span className={authBrandPerkIcon}>🔒</span>
                 <span>Free Forever — No Credit Card</span>
               </li>
             </ul>
           </div>
 
-          <div className="auth-brand__posters" aria-hidden="true">
+          <div className={authBrandPosters} aria-hidden="true">
             {posterGradients.map((g, i) => (
-              <div
-                key={i}
-                className="auth-brand__poster"
-                style={{ background: g }}
-              />
+              <div key={i} className={authBrandPoster} style={{ background: g }} />
             ))}
           </div>
         </div>
       </div>
 
       {/* ── Right form panel ── */}
-      <div className="auth-form-panel">
-        <div className="auth-form-inner">
-          <div className="auth-form-header">
-            <h2 className="auth-form-title">Create account</h2>
-            <p className="auth-form-sub">Join CineVault and never miss a great film again.</p>
+      <div className={authFormPanel}>
+        <div className={authFormInner}>
+          <div className={authFormHeader}>
+            <h2 className={authFormTitle}>Create account</h2>
+            <p className={authFormSub}>Join Alkademy CineVault and never miss a great film again.</p>
           </div>
 
           {/* Social signup */}
-          <button type="button" className="auth-social-btn">
+          <button type="button" className={authSocialBtn}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
               <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
@@ -113,11 +138,11 @@ export function SignUpPage() {
             Continue with Google
           </button>
 
-          <div className="auth-divider">
+          <div className={authDivider}>
             <span>or sign up with email</span>
           </div>
 
-          <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
+          <form className={authForm} onSubmit={(e) => e.preventDefault()}>
             <Input
               id="name"
               label="Full Name"
@@ -143,21 +168,21 @@ export function SignUpPage() {
               icon={IconLock}
             />
 
-            <p className="auth-terms">
+            <p className={authTerms}>
               By signing up you agree to our{' '}
-              <a href="#" className="auth-link">Terms of Service</a>
+              <a href="#" className={authLink}>Terms of Service</a>
               {' '}and{' '}
-              <a href="#" className="auth-link">Privacy Policy</a>.
+              <a href="#" className={authLink}>Privacy Policy</a>.
             </p>
 
-            <Button type="submit" variant="primary" size="lg" className="auth-submit">
+            <Button type="submit" variant="primary" size="lg" className={authSubmit}>
               Create Free Account
             </Button>
           </form>
 
-          <p className="auth-switch">
+          <p className={authSwitch}>
             Already have an account?{' '}
-            <Link to="/login" className="auth-link auth-link--accent">
+            <Link to="/login" className={`${authLink} ${authLinkAccent}`}>
               Sign In
             </Link>
           </p>

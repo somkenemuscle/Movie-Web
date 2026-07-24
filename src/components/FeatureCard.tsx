@@ -1,5 +1,4 @@
 import type { Feature } from '../data/mockData'
-import './FeatureCard.css'
 
 const icons: Record<Feature['icon'], React.ReactNode> = {
   search: (
@@ -39,12 +38,14 @@ interface FeatureCardProps {
 export function FeatureCard({ feature, index = 0 }: FeatureCardProps) {
   return (
     <article
-      className="feature-card"
+      className="group relative p-8 bg-surface border border-border rounded-xl overflow-hidden animate-fade-in-up transition-[transform,border-color,box-shadow] duration-[400ms] ease-out hover:-translate-y-1 hover:border-border-strong hover:shadow-md before:content-[''] before:absolute before:inset-0 before:bg-[image:var(--gradient-card)] before:pointer-events-none"
       style={{ animationDelay: `${index * 100}ms` }}
     >
-      <div className="feature-card__icon">{icons[feature.icon]}</div>
-      <h3 className="feature-card__title">{feature.title}</h3>
-      <p className="feature-card__description">{feature.description}</p>
+      <div className="relative z-[1] flex items-center justify-center w-[52px] h-[52px] mb-5 text-accent bg-[rgba(139,92,246,0.12)] rounded-lg border border-[rgba(139,92,246,0.22)] transition-[background,transform,box-shadow] duration-250 group-hover:bg-[rgba(139,92,246,0.2)] group-hover:scale-105 group-hover:shadow-[0_0_24px_rgba(139,92,246,0.25)] [&_svg]:w-6 [&_svg]:h-6">
+        {icons[feature.icon]}
+      </div>
+      <h3 className="relative z-[1] font-body text-[17px] font-bold mb-2.5 text-text">{feature.title}</h3>
+      <p className="relative z-[1] text-sm text-text-muted leading-[1.75]">{feature.description}</p>
     </article>
   )
 }
