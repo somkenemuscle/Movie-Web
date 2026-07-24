@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Chip } from '../components/Chip'
 import { Footer } from '../components/Footer'
 import { MovieCardSkeletonGrid } from '../components/MovieCardSkeleton'
 import { MovieResultCard } from '../components/MovieResultCard'
@@ -8,10 +7,8 @@ import { Pagination } from '../components/Pagination'
 import { SearchBar } from '../components/SearchBar'
 import { SELECT_FIELD_CLASSES, SELECT_LABEL_CLASSES, Select } from '../components/Select'
 import { StateMessage } from '../components/StateMessage'
-import { popularSearches } from '../data/searchSuggestions'
 import { useDebounce } from '../hooks/useDebounce'
 import { useMovieSearch } from '../hooks/useMovieSearch'
-import { useRecentSearches } from '../hooks/useRecentSearches'
 import { RESULTS_PER_PAGE, SEARCH_TOO_BROAD_MESSAGE } from '../services/movie.service'
 import type { MovieType } from '../types/movie'
 
@@ -38,7 +35,6 @@ function parseYear(value: string): number {
 
 export function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const { recentSearches, addSearch, clearSearches } = useRecentSearches()
   const [sortBy, setSortBy] = useState<SortOption>('relevance')
 
   const query = searchParams.get('q') ?? ''
@@ -65,9 +61,9 @@ export function SearchPage() {
   )
 
   // Keep the input synced when the URL query changes from outside typing —
-  // browser back/forward navigation. (handleSubmit/handleChipClick update
-  // committedQueryRef synchronously themselves, so this doesn't need to race
-  // the debounce effect below for those cases.)
+  // browser back/forward navigation. (handleSubmit updates committedQueryRef
+  // synchronously itself, so this doesn't need to race the debounce effect
+  // below for that case.)
   useEffect(() => {
     const urlQuery = searchParams.get('q') ?? ''
     committedQueryRef.current = urlQuery
@@ -90,12 +86,6 @@ export function SearchPage() {
 
   const { data, isLoading, error, retry } = useMovieSearch(searchQueryParams)
 
-  useEffect(() => {
-    if (data && query.trim()) {
-      addSearch(query.trim())
-    }
-  }, [data, query, addSearch])
-
   const sortedItems = useMemo(() => {
     if (!data) return []
     const items = [...data.items]
@@ -113,12 +103,6 @@ export function SearchPage() {
     const next = rawInput.trim()
     committedQueryRef.current = next
     updateSearchParams({ q: next || undefined, page: undefined })
-  }
-
-  const handleChipClick = (term: string) => {
-    committedQueryRef.current = term
-    setRawInput(term)
-    updateSearchParams({ q: term, page: undefined })
   }
 
   const handlePageChange = (nextPage: number) => {
@@ -205,44 +189,10 @@ export function SearchPage() {
       <section className="section !pt-14">
         <div className="container">
           {showIdleState && (
-            <div className="flex flex-col gap-10 max-w-[720px] mx-auto py-6 pb-12">
-              {recentSearches.length > 0 && (
-                <div className="flex flex-col gap-3.5">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-xs font-bold tracking-[0.1em] uppercase text-text-subtle">
-                      Recent Searches
-                    </h3>
-                    <button
-                      type="button"
-                      className="text-xs font-semibold text-text-muted transition-colors duration-150 hover:text-pink"
-                      onClick={clearSearches}
-                    >
-                      Clear
-                    </button>
-                  </div>
-                  <div className="flex flex-wrap gap-2.5">
-                    {recentSearches.map((term) => (
-                      <Chip
-                        key={term}
-                        label={term}
-                        onClick={() => handleChipClick(term)}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <div className="flex flex-col gap-3.5">
-                <h3 className="text-xs font-bold tracking-[0.1em] uppercase text-text-subtle">
-                  Popular Searches
-                </h3>
-                <div className="flex flex-wrap gap-2.5">
-                  {popularSearches.map((term) => (
-                    <Chip key={term} label={term} onClick={() => handleChipClick(term)} />
-                  ))}
-                </div>
-              </div>
-            </div>
+            <StateMessage
+              title="Search for a movie, series, or episode"
+              description="Start typing a title above to see results from the OMDb catalog."
+            />
           )}
 
           {showSkeletons && (

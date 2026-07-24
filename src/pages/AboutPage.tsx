@@ -206,7 +206,7 @@ export function AboutPage() {
                 to="/search"
                 variant="primary"
                 size="lg"
-                className="!bg-white !text-accent !shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:!bg-[#f5f3ff] hover:!shadow-[0_8px_32px_rgba(0,0,0,0.28)] hover:!brightness-100"
+                className="!bg-none !bg-white !text-accent !shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:!bg-[#f5f3ff] hover:!shadow-[0_8px_32px_rgba(0,0,0,0.28)] hover:!brightness-100"
               >
                 Start Searching
               </Button>

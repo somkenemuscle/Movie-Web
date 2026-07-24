@@ -1,11 +1,18 @@
 import { Button } from '../components/Button'
-import { MovieCard } from '../components/MovieCard'
 import { GenreCard } from '../components/GenreCard'
 import { FeatureCard } from '../components/FeatureCard'
 import { Footer } from '../components/Footer'
-import { featuredMovies, popularGenres, features } from '../data/mockData'
+import { MovieCardSkeletonGrid } from '../components/MovieCardSkeleton'
+import { MovieResultCard } from '../components/MovieResultCard'
+import { StateMessage } from '../components/StateMessage'
+import { featuredMovieIds } from '../data/featuredMovieIds'
+import { popularGenres, features } from '../data/mockData'
+import { useFeaturedMovies } from '../hooks/useFeaturedMovies'
 
 export function LandingPage() {
+  const { movies: featuredMovies, isLoading: featuredLoading, error: featuredError } =
+    useFeaturedMovies(featuredMovieIds)
+
   return (
     <div className="flex-1">
       {/* ── Hero ── */}
@@ -48,7 +55,7 @@ export function LandingPage() {
               <Button to="/signup" variant="primary" size="lg">
                 Get Started Free
               </Button>
-              <Button to="/signup" variant="secondary" size="lg">
+              <Button to="/search" variant="secondary" size="lg">
                 Browse Movies
               </Button>
             </div>
@@ -148,11 +155,22 @@ export function LandingPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {featuredMovies.map((movie, index) => (
-              <MovieCard key={movie.id} movie={movie} index={index} />
-            ))}
-          </div>
+          {featuredError ? (
+            <StateMessage
+              title="Couldn't load featured movies"
+              description={featuredError}
+            />
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {featuredLoading ? (
+                <MovieCardSkeletonGrid count={featuredMovieIds.length} />
+              ) : (
+                featuredMovies.map((movie, index) => (
+                  <MovieResultCard key={movie.id} movie={movie} index={index} />
+                ))
+              )}
+            </div>
+          )}
         </div>
       </section>
 
@@ -163,8 +181,8 @@ export function LandingPage() {
             <span className="section-label">Explore</span>
             <h2 className="section-title">Browse by Genre</h2>
             <p className="section-subtitle">
-              From pulse-pounding action to heartfelt drama — find the perfect
-              film for any mood.
+              From pulse-pounding action to heartfelt drama — search any of these
+              genres to find the perfect film for any mood.
             </p>
           </div>
 
@@ -219,7 +237,7 @@ export function LandingPage() {
                 to="/signup"
                 variant="primary"
                 size="lg"
-                className="!bg-white !text-accent !shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:!bg-[#f5f3ff] hover:!shadow-[0_8px_32px_rgba(0,0,0,0.28)] hover:!brightness-100"
+                className="!bg-none !bg-white !text-accent !shadow-[0_4px_24px_rgba(0,0,0,0.2)] hover:!bg-[#f5f3ff] hover:!shadow-[0_8px_32px_rgba(0,0,0,0.28)] hover:!brightness-100"
               >
                 Sign Up Free
               </Button>
